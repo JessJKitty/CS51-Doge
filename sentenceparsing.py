@@ -8,4 +8,3 @@ def makelist(sentence):
     return [word.rstrip(punctuation).lstrip(punctuation).lower()
                 for word in sentence.split(' ')]
 
-print (makelist(sentence))

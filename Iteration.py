@@ -1,23 +1,29 @@
 from __future__ import print_function
+import itertools
+from sentenceparsing import makelist
 
-sentence = ["bear", "car", "seal"]
+sentence = "Bear car seal miew?"
 
 dict1 = { 
-	"bear": {'NN': 0.8391, 'VB': 0.171921},
+	"bear": {'NN': 0.8391, 'VB': 0.161921},
 	"car": {'NN': 0.99999, 'VB': .000001},
         "seal": {'NN':1}
 }
 
-def iterate(sentence, dictionary):
-    finallist = [""] 
-    for i in sentence:
-        currlist = list(finallist)
-        newlist = []
-        for j in dictionary[i].keys():
-            for k in currlist:
-                newlist.append(k + ">" + j)
-        finallist = list(newlist)
-    return [x.lstrip(">") for x in finallist]
-            
+partset1 = ['NN', 'VB', 'MIEW', 'RAWR', 'WRATHKITTY']
 
-print (iterate(sentence, dict1))
+
+
+def init_normalize(lis):
+    l = len(lis)
+    return {el: 1.0 / l for el in lis}
+    
+partdict1 = init_normalize(partset1)
+
+
+
+def iterate(sentence, dictionary, partset):
+    return itertools.product(*(dictionary.get(word, partset).keys() for word in makelist(sentence)))
+    
+
+for i in iterate(sentence, dict1, partdict1): print(i)
