@@ -31,8 +31,9 @@ for i in fileNames:
 		    	lineArray = line.split(" ")
 		    	for wordBlock in lineArray:
 		    		slashIndex = wordBlock.find("/")
+		    		dashIndex = wordBlock.find("-")
 		    		word = wordBlock[:slashIndex].lower()
-		    		speech = wordBlock[slashIndex+1:]
+		    		speech = wordBlock[slashIndex+1:dashIndex]
 		    		# fill words dict
 		    		if word not in words:
 		    			words[word] = {speech: 1}
@@ -70,7 +71,6 @@ for word in words:
 		total += words[word][speech]
 	for speech in words[word]:
 		words[word][speech] = words[word][speech] / float(total)
-
 
 # export data
 with open("words.p", "wb") as dataOut:
