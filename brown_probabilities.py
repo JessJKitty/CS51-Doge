@@ -33,7 +33,10 @@ for i in fileNames:
 		    		slashIndex = wordBlock.find("/")
 		    		dashIndex = wordBlock.find("-")
 		    		word = wordBlock[:slashIndex].lower()
-		    		speech = wordBlock[slashIndex+1:dashIndex]
+		    		if dashIndex > 0:
+		    			speech = wordBlock[slashIndex+1:dashIndex]
+		    		else:
+		    			speech = wordBlock[slashIndex+1:]
 		    		# fill words dict
 		    		if word not in words:
 		    			words[word] = {speech: 1}
