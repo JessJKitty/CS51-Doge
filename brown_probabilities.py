@@ -23,6 +23,11 @@ combos = {}
 # Dictionary of dictionaries
 words = {}
 
+pos = []
+
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
+
 for i in fileNames:
 	with open("brown/" + i) as file:
 		for line in file:
@@ -37,6 +42,13 @@ for i in fileNames:
 		    			speech = wordBlock[slashIndex+1:dashIndex]
 		    		else:
 		    			speech = wordBlock[slashIndex+1:]
+		    		if speech.find("/") > 0:
+		    			speech = speech[speech.find("/")+1:]
+		    		if hasNumbers(speech) or (speech.find("/") > 0):
+		    			continue
+		    		# fill possible pos
+		    		if speech not in pos:
+		    			pos.append(speech);
 		    		# fill words dict
 		    		if word not in words:
 		    			words[word] = {speech: 1}
@@ -82,5 +94,7 @@ with open("words.p", "wb") as dataOut:
 with open("combos.p", "wb") as dataOut:
 	pickle.dump(combos, dataOut)
 
+with open("pos.p", "wb") as dataOut:
+	pickle.dump(pos, dataOut)
 
 
