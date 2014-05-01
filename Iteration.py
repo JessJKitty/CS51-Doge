@@ -24,6 +24,6 @@ partdict1 = init_normalize(partset1)
 
 def iterate(sentence, dictionary, partset):
     return itertools.product(*(dictionary.get(word, partset).keys() for word in makelist(sentence)))
-    
 
-for i in iterate(sentence, dict1, partdict1): print(i)
+
+#for i in iterate(sentence, dict1, partdict1): print(i)
