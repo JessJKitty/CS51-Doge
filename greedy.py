@@ -22,5 +22,5 @@ def greedy (sentence, word_POS_freqs, transition_probs, all_POS):
     return {POS_combo: calc_base_prob(sen_list, POS_combo, word_POS_freqs)
                for POS_combo in POS_combinations}
 
-c = greedy(sentence, word_POS_freqs, transition_probs, all_POS)
-print (max(c, key=lambda x: c[x]))
+##c = greedy(sentence, word_POS_freqs, transition_probs, all_POS)
+##print (max(c, key=lambda x: c[x]))

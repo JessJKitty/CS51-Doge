@@ -38,7 +38,13 @@ def collapse (sentence, word_POS_freqs, transition_probs):
                         * calc_base_prob(sen_list, POS_combo, word_POS_freqs))
                for POS_combo in POS_combinations}
 
-c = collapse(sentence, word_POS_freqs, transition_probs)
-print (max(c, key=lambda x: c[x]))
+##def return_max (function, sentence, word_POS_freqs, transition_probs):
+##    c = function(sentence, word_POS_freqs, transition_probs)
+##    return (max(c, key=lambda x: c[x]))
+##
+##print (return_max(collapse, sentence, word_POS_freqs, transition_probs))
+
+#c = collapse(sentence, word_POS_freqs, transition_probs)
+#print (max(c, key=lambda x: c[x]))
 
 #print iterate(sentence, word_POS_freqs, all_POS)
