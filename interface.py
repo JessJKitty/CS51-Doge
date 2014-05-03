@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+def f(x): return "" != x
 while(True):
-    var = raw_input("Please enter something: ")
-    print "Wow, such ignore. Amaze"
+	var = filter (f,raw_input("Please enter something: ").split("."))
+	print (var)
