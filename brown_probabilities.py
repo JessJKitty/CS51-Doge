@@ -25,9 +25,13 @@ words = {}
 
 pos = []
 
+# test if a string has any numbers in it
 def hasNumbers(inputString):
     return any(char.isdigit() for char in inputString)
 
+# break down the file into lines, lines into words, words into 
+# their body and their parts of speech. Process these, store them 
+# into appropriate arrays
 for i in fileNames:
 	with open("brown/" + i) as file:
 		for line in file:
@@ -67,7 +71,7 @@ for i in fileNames:
 		    			else:
 		    				combos[speechPair] += 1
 
-# generate decimal probabilities from totals
+# generate decimal probabilities from totals (generated above)
 # combos
 totals = {}
 for pair in combos:
@@ -86,7 +90,7 @@ for word in words:
 		total += words[word][speech]
 	for speech in words[word]:
 		words[word][speech] = words[word][speech] / float(total)
-
+		
 # export data
 with open("words.p", "wb") as dataOut:
 	pickle.dump(words, dataOut)
