@@ -64,14 +64,14 @@
 
 #example = [[.34, 'n','v','n'], [.25, 'v','v','n']]
 #def collapse (final_seqs, prob_list):
-	if len(final_seqs) == 0:
-		for prob in prob_list:
-			final_seqs.append([prob_list[prob], prob])
-	else:
-		for prob in prob_list:
-			for seq in final_seqs:
-				seq[0] *= prob[1]
-				seq.append(prob[0])
+##	if len(final_seqs) == 0:
+##		for prob in prob_list:
+##			final_seqs.append([prob_list[prob], prob])
+##	else:
+##		for prob in prob_list:
+##			for seq in final_seqs:
+##				seq[0] *= prob[1]
+##				seq.append(prob[0])
 #answer = []
 #s1 = find_probabilities('START', 'the')
 #print s1
@@ -81,6 +81,13 @@
 #s2b = find_probabilities('nil', 'word')
 #print s2a
 #print s2b
+
+##def return_max (function, sentence, word_POS_freqs, transition_probs):
+##    c = function(sentence, word_POS_freqs, transition_probs)
+##    try:
+##        return max([(c[x], x) for x in c])[1]
+##    except: return "miew. errors!"
+
 
 
 
