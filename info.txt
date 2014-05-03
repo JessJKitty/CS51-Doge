@@ -1,2 +1,2 @@
-title: Dogebot : Part of Speech Tagging using the Hidden Markov Model
+title: NerdDoge: Part of Speech Tagging using the Hidden Markov Model
 seas-usernames: jessicaxu, kelwenp, shannonzhu
