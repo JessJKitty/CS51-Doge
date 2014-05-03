@@ -21,26 +21,36 @@ transition_probs.update({('', pos) : 1 for pos in all_POS})
 transition_probs.update({(pos, '') : 1 for pos in all_POS})
 
 def doge_response(sentence, word_POS_freqs, transition_probs):
+    #tokenize sentence
     sen_list = makelist(sentence)
+    
+    #find the tuple that we think corresponds to the true POS
     c = return_max(collapse, sentence, word_POS_freqs, transition_probs)
-    #for e in c: print(e)
+
+    #define parts we want to look at
     important = {'nn', 'nn$', 'nnS' ,'nns$', 'np', 'np$', 'nps', 'nps$', 'nr'}
     others = {'jj', 'jjr', 'jjs', 'jjt'}
+
+    #define the things that Doge says
     stockphrases = [" Such ", " Very ", " Many ", " Wow ", " OMG ", " how to "]
+
+    #initialize keyphrase list
     say = []
     for i in range(len(c)):
-        # print (i in important)
+        # if c[i] is an adjective, add it
         if c[i] in others:
             say.append(sen_list[i])
-            #print("checking")
+
+        # if c[i] is a noun, wiki it and add those things. 
         if c[i] in important:
             for j in wikiscraping(sen_list[i]):
                 say.append(j)
-            #print("checking")
-                
+
+    #pick something random in the list                
     def pickrand (list):
         return list[random.randint(0, len(list))]
 
+    #generate an n - long doge phrase
     def generate (n, stock, say):
         response = ''
         for i in range(n):
@@ -49,7 +59,7 @@ def doge_response(sentence, word_POS_freqs, transition_probs):
         return response
                                                                    
     
-    
+    #max the doge phrase at 3, and if there are no key words, return "Wow, Amaze! Many brilliant"
     if len(say) == 0: return "Wow, Amaze! Many brilliant"
     else: return generate(min(3,len(say)), stockphrases, say)
     
