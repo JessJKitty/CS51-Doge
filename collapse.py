@@ -15,7 +15,7 @@ word_POS_freqs = pickle.load (open("words.p", "r"))
 # being following, given a certain part of speech
 transition_probs = pickle.load (open("combos.p", "r"))
 
-# This should be added to the basic transition_probs dictionary source
+# these are used to update the probabilities for the dictionary
 transition_probs.update({('', '') : 1})
 transition_probs.update({('', pos) : 1 for pos in all_POS})
 transition_probs.update({(pos, '') : 1 for pos in all_POS})
